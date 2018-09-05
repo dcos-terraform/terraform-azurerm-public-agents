@@ -1,6 +1,6 @@
 provider "azurerm" {}
 
-module "master-nsg" {
+module "pubagt-nsg" {
   source  = "dcos-terraform/nsg/azurerm"
   version = "~> 0.0"
 
@@ -8,7 +8,7 @@ module "master-nsg" {
     azurerm = "azurerm"
   }
 
-  dcos_role                 = "master"
+  dcos_role                 = "public-agent"
   location                  = "${var.location}"
   resource_group_name       = "${var.resource_group_name}"
   tags                      = "${var.tags}"
@@ -16,7 +16,7 @@ module "master-nsg" {
   network_security_group_id = "${var.network_security_group_id}"
 }
 
-module "master-lb" {
+module "pubagt-lb" {
   source  = "dcos-terraform/nsg/azurerm"
   version = "~> 0.0"
 
@@ -24,7 +24,7 @@ module "master-lb" {
     azurerm = "azurerm"
   }
 
-  dcos_role                 = "master"
+  dcos_role                 = "public-agent"
   location                  = "${var.location}"
   resource_group_name       = "${var.resource_group_name}"
   tags                      = "${var.tags}"
@@ -32,7 +32,7 @@ module "master-lb" {
   network_security_group_id = "${var.network_security_group_id}"
 }
 
-module "dcos-master-instances" {
+module "dcos-pubagt-instances" {
   source  = "dcos-terraform/instance/azurerm"
   version = "~> 0.0"
 
@@ -40,7 +40,7 @@ module "dcos-master-instances" {
     azurerm = "azurerm"
   }
 
-  num_instances            = "${var.num_masters}"
+  num_instances            = "${var.num_public_agents}"
   location                 = "${var.location}"
   name_prefix              = "${var.name_prefix}"
   instance_type            = "${var.instance_type}"

@@ -2,7 +2,7 @@
 # Instance Variables
 ###
 # Number of Instance
-variable "num_masters" {}
+variable "num_public_agents" {}
 
 # Location (region)
 variable "location" {}

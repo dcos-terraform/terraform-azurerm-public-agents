@@ -1,6 +1,6 @@
 # Number of Instance
-output "num_masters" {
-  value = "${var.num_masters}"
+output "num_public_agents" {
+  value = "${var.num_public_agents}"
 }
 
 # Cluster Name
@@ -55,7 +55,7 @@ output "network_security_group_id" {
 
 # SSH User
 output "admin_username" {
-  value = "${module.dcos-master-instances.admin_username}"
+  value = "${module.dcos-pubagt-instances.admin_username}"
 }
 
 # SSH Public Key
@@ -65,10 +65,10 @@ output "public_ssh_key" {
 
 # Private IP Addresses
 output "private_ips" {
-  value = ["${module.dcos-master-instances.private_ips}"]
+  value = ["${module.dcos-pubagt-instances.private_ips}"]
 }
 
 # Public IP Addresses
 output "public_ips" {
-  value = ["${module.dcos-master-instances.public_ips}"]
+  value = ["${module.dcos-pubagt-instances.public_ips}"]
 }
