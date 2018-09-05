@@ -16,7 +16,7 @@ module "pubagt-nsg" {
 }
 
 module "pubagt-lb" {
-  source  = "dcos-terraform/nsg/azurerm"
+  source  = "dcos-terraform/lb/azurerm"
   version = "~> 0.0"
 
   providers = {
