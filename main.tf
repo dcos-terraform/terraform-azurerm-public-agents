@@ -56,7 +56,7 @@ module "dcos-pubagt-instances" {
   public_ssh_key               = "${var.public_ssh_key}"
   tags                         = "${var.tags}"
   hostname_format              = "${var.hostname_format}"
-  private_backend_address_pool = "${module.pubagt-lb.private_backend_address_pool}"
-  public_backend_address_pool  = "${module.pubagt-lb.public_backend_address_pool}"
+  private_backend_address_pool = ["${module.pubagt-lb.private_backend_address_pool}"]
+  public_backend_address_pool  = ["${module.pubagt-lb.public_backend_address_pool}"]
   subnet_id                    = "${var.subnet_id}"
 }
