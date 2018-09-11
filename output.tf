@@ -67,3 +67,8 @@ output "private_ips" {
 output "public_ips" {
   value = ["${module.dcos-pubagt-instances.public_ips}"]
 }
+
+# Public Agent Load Balancer Address
+output "lb.fqdn" {
+  value = "${module.pubagt-lb.elb_address}"
+}
