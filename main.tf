@@ -1,40 +1,31 @@
 /**
  * [![Build Status](https://jenkins-terraform.mesosphere.com/service/dcos-terraform-jenkins/job/dcos-terraform/job/terraform-azurerm-public-agents/job/master/badge/icon)](https://jenkins-terraform.mesosphere.com/service/dcos-terraform-jenkins/job/dcos-terraform/job/terraform-azurerm-public-agents/job/master/)
+ * Azure DC/OS Public Agent Instances
+ * ==================================
+ *
+ * This module creates typical public agent instances
+ *
+ * EXAMPLE
+ * -------
+ *
+ *```hcl 
+ *module "dcos-public-agent-instances" {
+ *  source  = "dcos-terraform/public-agents/azure"
+ *  version = "~> 0.1"
+ *
+ *  subnet_id = "myid"
+ *  security_group_ids = ["sg-12345678"]"
+ *  public_ssh_key = "~/.ssh/id_rsa.pub"
+ *
+ *  num_public_agents = "2"
+ *  ...
+ *}
+ *```
  */
 
 provider "azurerm" {}
 
-module "pubagt-nsg" {
-  source  = "dcos-terraform/nsg/azurerm"
-  version = "~> 0.0"
-
-  providers = {
-    azurerm = "azurerm"
-  }
-
-  dcos_role           = "public-agent"
-  location            = "${var.location}"
-  resource_group_name = "${var.resource_group_name}"
-  tags                = "${var.tags}"
-  name_prefix         = "${var.name_prefix}"
-}
-
-module "pubagt-lb" {
-  source  = "dcos-terraform/lb/azurerm"
-  version = "~> 0.0"
-
-  providers = {
-    azurerm = "azurerm"
-  }
-
-  dcos_role           = "public-agent"
-  location            = "${var.location}"
-  resource_group_name = "${var.resource_group_name}"
-  tags                = "${var.tags}"
-  name_prefix         = "${var.name_prefix}"
-}
-
-module "dcos-pubagt-instances" {
+module "dcos-public-agent-instances" {
   source  = "dcos-terraform/instance/azurerm"
   version = "~> 0.0"
 
@@ -53,13 +44,13 @@ module "dcos-pubagt-instances" {
   disk_type                    = "${var.disk_type}"
   disk_size                    = "${var.disk_size}"
   resource_group_name          = "${var.resource_group_name}"
-  network_security_group_id    = "${module.pubagt-nsg.nsg_id}"
+  network_security_group_id    = "${var.network_security_group_id}"
   user_data                    = "${var.user_data}"
   admin_username               = "${var.admin_username}"
   public_ssh_key               = "${var.public_ssh_key}"
   tags                         = "${var.tags}"
   hostname_format              = "${var.hostname_format}"
-  private_backend_address_pool = ["${module.pubagt-lb.private_backend_address_pool}"]
-  public_backend_address_pool  = ["${module.pubagt-lb.public_backend_address_pool}"]
+  private_backend_address_pool = ["${var.private_backend_address_pool}"]
+  public_backend_address_pool  = ["${var.public_backend_address_pool}"]
   subnet_id                    = "${var.subnet_id}"
 }

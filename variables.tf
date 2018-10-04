@@ -100,3 +100,21 @@ variable "hostname_format" {
 variable "subnet_id" {
   description = "Subnet ID"
 }
+
+variable "network_security_group_id" {
+  description = "network security group id"
+  default     = ""
+}
+
+variable "public_backend_address_pool" {
+  description = "public backend address pool"
+  type        = "list"
+  default     = []
+}
+
+# Private backend address pool
+variable "private_backend_address_pool" {
+  description = "private backend address pool"
+  type        = "list"
+  default     = []
+}
