@@ -42,9 +42,9 @@ module "dcos-public-agent-instances" {
 | num_public_agents | Specify the amount of public agents. These agents will host marathon-lb and edgelb | string | - | yes |
 | private_backend_address_pool | private backend address pool | list | `<list>` | no |
 | public_backend_address_pool | public backend address pool | list | `<list>` | no |
-| public_ssh_key | public ssh key | string | - | yes |
 | resource_group_name | resource group name | string | - | yes |
 | ssh_private_key_filename | Path to the SSH private key | string | `/dev/null` | no |
+| ssh_public_key | SSH public key in authorized keys format (e.g. 'ssh-rsa ..') to be used with the instances. Make sure you added this key to your ssh-agent. | string | - | yes |
 | subnet_id | Subnet ID | string | - | yes |
 | tags | Add custom tags to all resources | map | `<map>` | no |
 
