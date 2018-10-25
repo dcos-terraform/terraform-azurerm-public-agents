@@ -27,7 +27,7 @@ provider "azurerm" {}
 
 module "dcos-public-agent-instances" {
   source  = "dcos-terraform/instance/azurerm"
-  version = "~> 0.0"
+  version = "~> 0.1.0"
 
   providers = {
     azurerm = "azurerm"
