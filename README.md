@@ -10,7 +10,7 @@ EXAMPLE
 ```hcl
 module "dcos-public-agent-instances" {
  source  = "dcos-terraform/public-agents/azure"
- version = "~> 0.1"
+ version = "~> 0.1.0"
 
  subnet_id = "myid"
  security_group_ids = ["sg-12345678"]"
