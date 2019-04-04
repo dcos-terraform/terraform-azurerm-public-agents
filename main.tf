@@ -50,7 +50,5 @@ module "dcos-public-agent-instances" {
   ssh_public_key               = "${var.ssh_public_key}"
   tags                         = "${var.tags}"
   hostname_format              = "${var.hostname_format}"
-  private_backend_address_pool = ["${var.private_backend_address_pool}"]
-  public_backend_address_pool  = ["${var.public_backend_address_pool}"]
   subnet_id                    = "${var.subnet_id}"
 }
