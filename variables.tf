@@ -2,6 +2,10 @@ variable "num_public_agents" {
   description = "Specify the amount of public agents. These agents will host marathon-lb and edgelb"
 }
 
+variable "cluster_name" {
+  description = "Name of the DC/OS cluster"
+}
+
 variable "location" {
   description = "Azure Region"
 }
