@@ -22,8 +22,3 @@ output "ip_configuration_names" {
   description = "List of ip configuration names associated with the instance nic ids"
   value       = ["${module.dcos-public-agent-instances.ip_configuration_names}"]
 }
-
-output "prereq_id" {
-  description = "Prereq id used for dependency"
-  value       = "${module.dcos-public-agent-instances.prereq_id}"
-}
