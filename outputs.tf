@@ -17,8 +17,3 @@ output "instance_nic_ids" {
   description = "List of instance nic ids created by this module"
   value       = ["${module.dcos-public-agent-instances.instance_nic_ids}"]
 }
-
-output "ip_configuration_names" {
-  description = "List of ip configuration names associated with the instance nic ids"
-  value       = ["${module.dcos-public-agent-instances.ip_configuration_names}"]
-}
